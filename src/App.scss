@@ -1,0 +1,41 @@
+@use "./components/variables" as *;
+@import url("https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap");
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  font-size: 1.6rem;
+  line-height: 100%;
+  font-weight: 500;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 108rem;
+  padding: 0 auto;
+}
+
+//Header
+.header {
+	padding: 8.4rem 0 0;
+
+	&__items {
+		display: flex;
+		align-items: center;
+		gap: 3.4rem;
+	}
+
+	&__img {
+		max-width: 10rem;
+		img {
+			width: 100%;
+		}
+	}
+
+	&__title {
+		@include title(2.4rem, $colorFontMain)
+	}
+}
