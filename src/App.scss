@@ -15,27 +15,205 @@ body {
 .container {
   margin: 0 auto;
   max-width: 108rem;
-  padding: 0 auto;
+  padding: 0 1.5rem;
 }
 
 //Header
 .header {
-	padding: 8.4rem 0 0;
+  padding: 8.4rem 0 0;
 
-	&__items {
-		display: flex;
-		align-items: center;
-		gap: 3.4rem;
-	}
+  &__items {
+    display: flex;
+    align-items: center;
+    gap: 3.4rem;
+  }
 
-	&__img {
-		max-width: 10rem;
-		img {
-			width: 100%;
-		}
-	}
+  &__img {
+    max-width: 10rem;
+    img {
+      width: 100%;
+    }
+  }
 
-	&__title {
-		@include title(2.4rem, $colorFontMain)
-	}
+  &__title {
+    @include title(2.4rem, $colorFontMain);
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 1.9rem 0 0;
+
+    &__items {
+      justify-content: center;
+    }
+
+    &__title {
+      display: none;
+    }
+
+    &__img {
+      max-width: 5.7rem;
+    }
+  }
+}
+
+//MainContent
+.main {
+  padding: 2.06rem 0 0;
+
+  &__items {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 5rem;
+  }
+
+  &__item {
+    &:first-child {
+      flex: 0 1 26%;
+    }
+    &:last-child {
+      flex: 0 1 68%;
+    }
+  }
+}
+
+//filters
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 4.7rem;
+}
+
+.filter {
+  padding: 1.9rem 1.9rem 3.1rem;
+  background-color: $backgroundFilters;
+  border-radius: 1rem;
+
+  &__title {
+    @include title(2rem, $colorFontMain);
+    margin-bottom: 2.7rem;
+  }
+
+  &__list {
+    color: $colorFontFilters;
+
+    li {
+      display: flex;
+      align-items: center;
+    }
+
+    li:not(:last-child) {
+      margin-bottom: 2.1rem;
+    }
+  }
+}
+
+.square {
+  &__rowcheckbox {
+    margin-right: 1.9rem;
+    appearance: none;
+    width: 2.1rem;
+    height: 2.1rem;
+    border-radius: 0.4rem;
+    accent-color: $backgroundFilters;
+    border: 1px solid $colorFontFilters;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
+.circle {
+  &__rowcheckbox {
+    margin-right: 2.2rem;
+    position: relative;
+    appearance: none;
+    width: 2.1rem;
+    height: 2.1rem;
+    border-radius: 50%;
+    accent-color: $backgroundFilters;
+    border: 1px solid $colorFontFilters;
+
+    &_after {
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0.2rem;
+        left: 0.2rem;
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 50%;
+        background-color: $colorFontFilters;
+      }
+    }
+  }
+}
+
+//tiskets
+.tickets {
+  &__sort-buttons {
+    margin-bottom: 2.9rem;
+    display: flex;
+    width: 100%;
+    height: 5.5rem;
+    border: 0.1rem solid $colorFontMain;
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+  &__sort-button {
+    flex: 0 1 33.3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $backgroundFilters;
+    cursor: pointer;
+
+    &:first-child {
+      border-right: 0.1rem solid $colorFontMain;
+    }
+    &:last-child {
+      border-left: 0.1rem solid $colorFontMain;
+    }
+  }
+
+  &__list {
+	display: flex;
+	flex-direction: column;
+	gap: 4.7rem;
+  }
+}
+
+//ticket
+.ticket {
+  padding: 3.8rem 4rem 2.5rem 3.9rem;
+  background-color: $backgroundFilters;
+  border-radius: 1rem;
+  color: $colorFontFilters;
+
+  &__items {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  &__price {
+	@include title(3.2rem, $colorFontMain);
+	margin-bottom: 2.5rem;
+  }
+
+  &__text,
+  &__path {
+	margin-bottom: 0.9rem;
+  }
+
+  &__duration,
+  &__time,
+  &__transfers {
+	color: $colorFontMain;
+  }
+
+  &__img {
+	margin-bottom: 2.5rem;
+  }
 }
