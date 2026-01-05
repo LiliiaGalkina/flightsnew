@@ -3,6 +3,7 @@ import TransferCountFilter from "./TransferCountFilter";
 import TicketsList from "./TicketsList";
 
 const MainContent = () => {
+	
   return (
     <main className="main">
       <div className="container">
