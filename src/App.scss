@@ -178,21 +178,21 @@ body {
   }
 
   &__list {
-	margin-bottom: 7.4rem;
-	display: flex;
-	flex-direction: column;
-	gap: 4.7rem;
+    margin-bottom: 7.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4.7rem;
   }
 
   &__addtickets {
-	@include title(2.4rem, $colorFontLightt);
-	width: 100%;
-	height: 6.2rem;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border-radius: 1rem;
-	background-color: $colorFontMain;
+    @include title(2.4rem, $colorFontLightt);
+    width: 100%;
+    height: 6.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    background-color: $colorFontMain;
   }
 }
 
@@ -209,23 +209,232 @@ body {
     align-items: flex-end;
   }
 
+  &__item {
+	&:last-child {
+		text-align: center;
+	}
+  }
+
+
   &__price {
-	@include title(3.2rem, $colorFontMain);
-	margin-bottom: 2.5rem;
+    @include title(3.2rem, $colorFontMain);
+    margin-bottom: 2.5rem;
   }
 
   &__text,
   &__path {
-	margin-bottom: 0.9rem;
+    margin-bottom: 0.9rem;
   }
 
   &__duration,
   &__time,
   &__transfers {
-	color: $colorFontMain;
+    color: $colorFontMain;
   }
 
   &__img {
-	margin-bottom: 2.5rem;
+    margin-bottom: 2.5rem;
   }
+}
+
+.filtermobile {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .header {
+    padding: 5rem 0 0;
+  }
+
+  .ticket {
+    padding: 3rem 2.3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 1.9rem 0 0;
+    &__img {
+      max-width: 5.7rem;
+    }
+    &__title {
+      display: none;
+    }
+  }
+  .main {
+    padding: 2.7rem 0 5.9rem;
+    &__items {
+      display: block;
+    }
+    &__item {
+      &:first-child {
+        display: none;
+      }
+    }
+  }
+  .filtermobile {
+    display: block;
+    margin-bottom: 3.4rem;
+    width: 100%;
+    padding: 1.2rem 1.6rem 0 2.3rem;
+    border-radius: 1rem;
+    background-color: $colorFontMain;
+    color: $colorFontLightt;
+
+    &__row {
+      padding-bottom: 1.3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &__info {
+      margin-right: 1rem;
+      font-weight: 500;
+    }
+
+    &__button {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    &__buttontext {
+      margin-right: 1.7rem;
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+
+    .filters {
+      padding-bottom: 4.1rem;
+      flex-direction: row;
+    }
+
+    .filter {
+      flex: 0 1 50%;
+      margin-bottom: 0;
+      padding: 0;
+      display: block;
+      background-color: inherit;
+      &:not(:last-child) {
+        margin-right: 6.6rem;
+      }
+
+      &__title {
+        @include title(2rem, $colorFontLightt);
+        margin-bottom: 1.2rem;
+      }
+    }
+
+    .square {
+      &__rowcheckbox {
+        border: 1px solid $colorFontLightt;
+      }
+      &__rowtext {
+        color: $colorFontLightt;
+      }
+    }
+
+    .circle {
+      &__rowcheckbox {
+        border: 1px solid $colorFontLightt;
+
+        &_after {
+          &::after {
+            background-color: $colorFontLightt;
+          }
+        }
+      }
+
+      &__rowtext {
+        color: $colorFontLightt;
+      }
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  .filtermobile {
+    &__info {
+      font-size: 1.2rem;
+    }
+
+    &__buttontext {
+      display: none;
+    }
+
+    .filters {
+      gap: 2rem;
+    }
+
+	.filter {
+		&__title {
+			 @include title(1.6rem, $colorFontLightt);
+		}
+	}
+
+	.filter:first-child {
+		margin-right: 0;
+	}
+
+	.circle__rowtext,
+	.square__rowtext {
+		font-size: 1.6rem;
+	}
+  }
+}
+
+@media (max-width: 480px) {
+	.filtermobile {
+		.filters {
+			flex-direction: column;
+			gap: 4rem;
+		}
+
+		.filter {
+			&__title {
+				@include title(1.8rem, $colorFontLightt);
+			}
+		}
+	}
+
+	.ticket {
+		padding: 2rem 1rem;
+		min-height: 14rem;
+		&__img {
+			max-width: 13rem;
+			img {
+				width: 100%;
+			}
+		}
+		&__price {
+			font-size: 2.8rem;
+		}
+		&__text,
+		&__time,
+		&__duration,
+		&__path,
+		&__transfers {
+			font-size: 1.2rem;
+		}
+	}
+}
+
+@media (max-width: 375px) {
+	.tickets {
+		&__sort-button {
+			font-size: 1.2rem;
+		}
+		&__addtickets {
+			    @include title(1.8rem, $colorFontLightt);
+		}
+	}
+	.ticket {
+		&__price {
+			font-size: 1.8rem;
+		}
+		&__img {
+			max-width: 8rem;
+		}
+	}
 }
