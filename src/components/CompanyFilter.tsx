@@ -8,20 +8,22 @@ const CompanyFilter = () => {
 	const [filterCompany3, setFilterCompany3] = useState(false);
 
 	const dispatch = useAppDispatch();
+
+	const companies = ["Победа", "Red Wings", "S7 Airlines"];
 	
 	const handleFilterCompanyClick1 = () => {
 		setFilterCompany1(!filterCompany1);
-		dispatch(setSelectedAirlines("Победа"));
+		dispatch(setSelectedAirlines(companies[0]));
     dispatch(filterTickets());
 	};
 		const handleFilterCompanyClick2 = () => {
 			setFilterCompany2(!filterCompany2);
-			dispatch(setSelectedAirlines("Red Wings"));
+			dispatch(setSelectedAirlines(companies[1]));
         dispatch(filterTickets());
 	};
 		const handleFilterCompanyClick3 = () => {
 			setFilterCompany3(!filterCompany3);
-			dispatch(setSelectedAirlines("S7 Airlines"));
+			dispatch(setSelectedAirlines(companies[2]));
            dispatch(filterTickets());
     };
 	
