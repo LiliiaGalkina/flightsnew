@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useAppDispatch, useAppSelector } from "../store/hook";
-import { filterTickets } from "../store/flightsSlice";
+import { useAppDispatch} from "../store/hook";
+import { filterTickets, setSelectedAirlines } from "../store/flightsSlice";
 
 const CompanyFilter = () => {
 	const [filterCompany1, setFilterCompany1] = useState(false);
@@ -8,31 +8,20 @@ const CompanyFilter = () => {
 	const [filterCompany3, setFilterCompany3] = useState(false);
 
 	const dispatch = useAppDispatch();
-	let companiesName = useAppSelector((state) => state.flights.filterByCompany);
-
-	  const checkCompanies = (company: string) => {
-      if (!companiesName.includes(company)) {
-        companiesName.push(company);
-      } else {
-        companiesName = companiesName.filter(
-          (companyItem) => companyItem !== company
-        );
-      }
-    };
-
+	
 	const handleFilterCompanyClick1 = () => {
-    setFilterCompany1(!filterCompany1);
-    checkCompanies("Победа");
+		setFilterCompany1(!filterCompany1);
+		dispatch(setSelectedAirlines("Победа"));
     dispatch(filterTickets());
 	};
 		const handleFilterCompanyClick2 = () => {
-        setFilterCompany2(!filterCompany2);
-        checkCompanies("Red Wings");
+			setFilterCompany2(!filterCompany2);
+			dispatch(setSelectedAirlines("Red Wings"));
         dispatch(filterTickets());
 	};
 		const handleFilterCompanyClick3 = () => {
-           setFilterCompany3(!filterCompany3);
-           checkCompanies("S7 Airlines");
+			setFilterCompany3(!filterCompany3);
+			dispatch(setSelectedAirlines("S7 Airlines"));
            dispatch(filterTickets());
     };
 	
