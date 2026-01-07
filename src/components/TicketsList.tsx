@@ -2,7 +2,6 @@ import Ticket from "./Ticket";
 import { useAppDispatch, useAppSelector } from "../store/hook";
 import { fetchFlights, sortTicketsCheap, sortTicketsFast, sortTicketsOptimal } from "../store/flightsSlice";
 import { useCallback, useEffect, useState } from "react";
-import FilterMobile from "./FilterMobile";
 
 const TicketsList = () => {
 	 const [isCheapActive, setIsCheapActive] = useState(false);
@@ -86,7 +85,6 @@ const TicketsList = () => {
           Самый оптимальный
         </button>
 		  </div>
-		  <FilterMobile/>
       <div className="tickets__list">
         {flights.slice(0, displayedTickets).map((flight) => (
           <Ticket key={flight.id} {...flight} />
