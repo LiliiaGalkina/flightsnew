@@ -3,30 +3,7 @@ import {
   createAsyncThunk,
   type PayloadAction,
 } from "@reduxjs/toolkit";
-
-interface ITime {
-  startTime: string;
-  endTime: string;
-}
-
-interface IFlight {
-  id: number;
-  price: number;
-  fromto: string;
-  time: ITime;
-  company: string;
-  duration: number;
-  connectionAmount: number;
-}
-
-interface IFlightState {
-  flights: IFlight[];
-  filtered: IFlight[];
-  filterByCompany: string[];
-  filterByTransfersCount: number[];
-  isLoading: boolean;
-  isError: boolean;
-}
+import type { IFlight, IFlightState } from "../components/types";
 
 export const fetchFlights = createAsyncThunk<
   IFlight[],

@@ -2,20 +2,10 @@ import type React from "react";
 import pobeda from "/image/pobeda.png";
 import s7 from "/image/s7.png";
 import redwings from "/image/red-wings.png";
+import { companies } from "./helpers";
+import type { TicketProps } from "./types";
 
-type Time = {
-  startTime: string;
-  endTime: string;
-};
 
-interface TicketProps {
-  price: number;
-  fromto: string;
-  time: Time;
-  company: string;
-  duration: number;
-  connectionAmount: number;
-}
 
 const Ticket: React.FC<TicketProps> = ({
   price,
@@ -44,11 +34,11 @@ const Ticket: React.FC<TicketProps> = ({
           <div className="ticket__img">
             <img
               src={
-                company === "Победа"
+                company === companies[0]
                   ? pobeda
-                  : company === "S7 Airlines"
+                  : company === companies[2]
                   ? s7
-                  : company === "Red Wings"
+                  : company === companies[1]
                   ? redwings
                   : ""
               }

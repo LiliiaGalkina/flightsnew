@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAppDispatch } from "../store/hook";
 import { filterTickets, setSelectedAirlines } from "../store/flightsSlice";
+import { companies } from "./helpers";
 
 const CompanyFilter = () => {
   const [filterCompany1, setFilterCompany1] = useState(false);
@@ -8,8 +9,6 @@ const CompanyFilter = () => {
   const [filterCompany3, setFilterCompany3] = useState(false);
 
   const dispatch = useAppDispatch();
-
-  const companies = ["Победа", "Red Wings", "S7 Airlines"];
 
   const handleFilterCompanyClick1 = () => {
     setFilterCompany1(!filterCompany1);
