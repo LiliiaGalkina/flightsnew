@@ -3,38 +3,38 @@ import { useAppDispatch } from "../store/hook";
 import { filterTickets, setSelectedStops } from "../store/flightsSlice";
 
 const TransferCountFilter = () => {
-	const [filterTransit0, setFilterTransit0] = useState(false);
-	const [filterTransit1, setFilterTransit1] = useState(false);
-	const [filterTransit2, setFilterTransit2] = useState(false);
-	const [filterTransit3, setFilterTransit3] = useState(false);
+  const [filterTransit0, setFilterTransit0] = useState(false);
+  const [filterTransit1, setFilterTransit1] = useState(false);
+  const [filterTransit2, setFilterTransit2] = useState(false);
+  const [filterTransit3, setFilterTransit3] = useState(false);
 
-		const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
 
-	  const handleFilterTransitClick0 = () => {
-		  setFilterTransit0(!filterTransit0);
-		  dispatch(setSelectedStops(0))
-		  dispatch(filterTickets());
-	};
-	
-		  const handleFilterTransitClick1 = () => {
-			  setFilterTransit1(!filterTransit1);
-			  dispatch(setSelectedStops(1));
-			    dispatch(filterTickets());
-	};
-	
-		  const handleFilterTransitClick2 = () => {
-			  setFilterTransit2(!filterTransit2);
-			  dispatch(setSelectedStops(2));
-			    dispatch(filterTickets());
-	};
-	
-		  const handleFilterTransitClick3 = () => {
-			  setFilterTransit3(!filterTransit3);
-			  dispatch(setSelectedStops(3));
-			    dispatch(filterTickets());
-      };
+  const handleFilterTransitClick0 = () => {
+    setFilterTransit0(!filterTransit0);
+    dispatch(setSelectedStops(0));
+    dispatch(filterTickets());
+  };
 
-	return (
+  const handleFilterTransitClick1 = () => {
+    setFilterTransit1(!filterTransit1);
+    dispatch(setSelectedStops(1));
+    dispatch(filterTickets());
+  };
+
+  const handleFilterTransitClick2 = () => {
+    setFilterTransit2(!filterTransit2);
+    dispatch(setSelectedStops(2));
+    dispatch(filterTickets());
+  };
+
+  const handleFilterTransitClick3 = () => {
+    setFilterTransit3(!filterTransit3);
+    dispatch(setSelectedStops(3));
+    dispatch(filterTickets());
+  };
+
+  return (
     <div className="filter">
       <div className="filter__title">Количество пересадок</div>
       <ul className="filter__list square">
@@ -113,6 +113,6 @@ const TransferCountFilter = () => {
       </ul>
     </div>
   );
-}
+};
 
 export default TransferCountFilter;

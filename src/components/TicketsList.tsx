@@ -1,30 +1,34 @@
 import Ticket from "./Ticket";
 import { useAppDispatch, useAppSelector } from "../store/hook";
-import { fetchFlights, sortTicketsCheap, sortTicketsFast, sortTicketsOptimal } from "../store/flightsSlice";
+import {
+  fetchFlights,
+  sortTicketsCheap,
+  sortTicketsFast,
+  sortTicketsOptimal,
+} from "../store/flightsSlice";
 import { useCallback, useEffect, useState } from "react";
 
 const TicketsList = () => {
-	 const [isCheapActive, setIsCheapActive] = useState(false);
-   const [isFastActive, setIsFastActive] = useState(false);
-   const [isOptimalActive, setIsOptimalActive] = useState(false);
-	const [displayedTickets, setDisplayedTickets] = useState<number>(3);
-	
-	const dispatch = useAppDispatch();
-	
-	useEffect(() => {
-		dispatch(fetchFlights());
-	}, [dispatch]);
+  const [isCheapActive, setIsCheapActive] = useState(false);
+  const [isFastActive, setIsFastActive] = useState(false);
+  const [isOptimalActive, setIsOptimalActive] = useState(false);
+  const [displayedTickets, setDisplayedTickets] = useState<number>(3);
 
-	 const handleLoadMore = useCallback(() => {
-     if (displayedTickets < 15) {
-       setDisplayedTickets(displayedTickets + 3);
-     }
-   }, [displayedTickets]);
+  const dispatch = useAppDispatch();
 
-	const flights = useAppSelector((state) => state.flights.filtered);
-	const isLoading = useAppSelector((state) => state.flights.loading);
+  useEffect(() => {
+    dispatch(fetchFlights());
+  }, [dispatch]);
 
-	const onSortCheap = () => {
+  const handleLoadMore = useCallback(() => {
+    if (displayedTickets < 15) {
+      setDisplayedTickets(displayedTickets + 3);
+    }
+  }, [displayedTickets]);
+
+  const flights = useAppSelector((state) => state.flights.filtered);
+
+  const onSortCheap = () => {
     if (!isCheapActive) {
       setIsCheapActive(true);
       setIsFastActive(false);
@@ -84,7 +88,7 @@ const TicketsList = () => {
         >
           Самый оптимальный
         </button>
-		  </div>
+      </div>
       <div className="tickets__list">
         {flights.slice(0, displayedTickets).map((flight) => (
           <Ticket key={flight.id} {...flight} />
@@ -103,4 +107,4 @@ const TicketsList = () => {
   );
 };
 
-export default TicketsList
+export default TicketsList;

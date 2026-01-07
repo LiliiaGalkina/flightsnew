@@ -24,8 +24,8 @@ interface IFlightState {
   filtered: IFlight[];
   filterByCompany: string[];
   filterByTransfersCount: number[];
-  loading: boolean;
-  error: string | null;
+  isLoading: boolean;
+  isError: boolean;
 }
 
 export const fetchFlights = createAsyncThunk<
@@ -46,8 +46,8 @@ const initialState: IFlightState = {
   filtered: [],
   filterByCompany: [],
   filterByTransfersCount: [],
-  loading: false,
-  error: null,
+  isLoading: false,
+  isError: false,
 };
 
 const flightsSlice = createSlice({
@@ -66,26 +66,26 @@ const flightsSlice = createSlice({
       );
     },
 
-	  setSelectedStops: (state, action) => {
-		if (!state.filterByTransfersCount.includes(action.payload)) {
-			state.filterByTransfersCount.push(action.payload);
-		} else {
-			state.filterByTransfersCount = state.filterByTransfersCount.filter(
-				(countTransitItem) => countTransitItem !== action.payload
-			)
-		  }
+    setSelectedStops: (state, action) => {
+      if (!state.filterByTransfersCount.includes(action.payload)) {
+        state.filterByTransfersCount.push(action.payload);
+      } else {
+        state.filterByTransfersCount = state.filterByTransfersCount.filter(
+          (countTransitItem) => countTransitItem !== action.payload
+        );
+      }
     },
-	  setSelectedAirlines: (state, action) => {
+    setSelectedAirlines: (state, action) => {
       if (!state.filterByCompany.includes(action.payload)) {
         state.filterByCompany.push(action.payload);
       } else {
         state.filterByCompany = state.filterByCompany.filter(
           (companyItem) => companyItem !== action.payload
-        )
-		  }
+        );
+      }
     },
     filterTickets: (state) => {
-       if (
+      if (
         state.filterByCompany.length > 0 &&
         state.filterByTransfersCount.length === 0
       ) {
@@ -111,7 +111,7 @@ const flightsSlice = createSlice({
       } else if (
         state.filterByCompany.length === 0 &&
         state.filterByTransfersCount.length === 0
-	  ) {
+      ) {
         state.filtered = state.flights;
       }
     },
@@ -119,17 +119,21 @@ const flightsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchFlights.pending, (state) => {
-        state.loading = true;
-        state.error = null;
+        state.isLoading = true;
       })
       .addCase(
         fetchFlights.fulfilled,
         (state, action: PayloadAction<IFlight[]>) => {
           state.flights = action.payload;
           state.filtered = action.payload;
-          state.loading = false;
+          state.isLoading = false;
+          state.isError = false;
         }
-      );
+      )
+      .addCase(fetchFlights.rejected, (state) => {
+        state.isLoading = false;
+        state.isError = true;
+      });
   },
 });
 
@@ -137,9 +141,9 @@ export const {
   sortTicketsCheap,
   sortTicketsFast,
   sortTicketsOptimal,
-	filterTickets,
-	setSelectedAirlines,
-  setSelectedStops
+  filterTickets,
+  setSelectedAirlines,
+  setSelectedStops,
 } = flightsSlice.actions;
 
 export default flightsSlice.reducer;

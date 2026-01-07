@@ -18,6 +18,15 @@ body {
   padding: 0 1.5rem;
 }
 
+.error {
+	@include title(2rem, $colorFontError);
+	padding: 2rem;
+}
+
+.loading {
+	@include title(2rem, $colorFontLoading);
+	padding: 2rem;
+}
 //Header
 .header {
   padding: 8.4rem 0 0;

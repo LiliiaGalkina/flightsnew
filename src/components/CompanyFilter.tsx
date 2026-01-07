@@ -1,33 +1,33 @@
 import { useState } from "react";
-import { useAppDispatch} from "../store/hook";
+import { useAppDispatch } from "../store/hook";
 import { filterTickets, setSelectedAirlines } from "../store/flightsSlice";
 
 const CompanyFilter = () => {
-	const [filterCompany1, setFilterCompany1] = useState(false);
-	const [filterCompany2, setFilterCompany2] = useState(false);
-	const [filterCompany3, setFilterCompany3] = useState(false);
+  const [filterCompany1, setFilterCompany1] = useState(false);
+  const [filterCompany2, setFilterCompany2] = useState(false);
+  const [filterCompany3, setFilterCompany3] = useState(false);
 
-	const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
 
-	const companies = ["Победа", "Red Wings", "S7 Airlines"];
-	
-	const handleFilterCompanyClick1 = () => {
-		setFilterCompany1(!filterCompany1);
-		dispatch(setSelectedAirlines(companies[0]));
+  const companies = ["Победа", "Red Wings", "S7 Airlines"];
+
+  const handleFilterCompanyClick1 = () => {
+    setFilterCompany1(!filterCompany1);
+    dispatch(setSelectedAirlines(companies[0]));
     dispatch(filterTickets());
-	};
-		const handleFilterCompanyClick2 = () => {
-			setFilterCompany2(!filterCompany2);
-			dispatch(setSelectedAirlines(companies[1]));
-        dispatch(filterTickets());
-	};
-		const handleFilterCompanyClick3 = () => {
-			setFilterCompany3(!filterCompany3);
-			dispatch(setSelectedAirlines(companies[2]));
-           dispatch(filterTickets());
-    };
-	
-	return (
+  };
+  const handleFilterCompanyClick2 = () => {
+    setFilterCompany2(!filterCompany2);
+    dispatch(setSelectedAirlines(companies[1]));
+    dispatch(filterTickets());
+  };
+  const handleFilterCompanyClick3 = () => {
+    setFilterCompany3(!filterCompany3);
+    dispatch(setSelectedAirlines(companies[2]));
+    dispatch(filterTickets());
+  };
+
+  return (
     <div className="filter">
       <div className="filter__title">Компании</div>
       <ul className="filter__list circle">
@@ -82,6 +82,6 @@ const CompanyFilter = () => {
       </ul>
     </div>
   );
-}
+};
 
 export default CompanyFilter;
